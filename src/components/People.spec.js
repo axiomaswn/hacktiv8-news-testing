@@ -30,10 +30,9 @@ describe('<People />', () => {
       expect(wrapper.state('datas')).to.have.lengthOf(10)
       done()
     })
-    .catch((error) => {
-      assert.isNotOk(error,'Promise error');
-      done();
-    });
+    .catch(err => {
+      console.log(err);
+    })
   })
 
 })

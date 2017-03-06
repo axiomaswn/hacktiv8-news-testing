@@ -66,10 +66,9 @@ describe('<Home />', () => {
       expect(wrapper.state('datas')).to.have.lengthOf(20)
       done()
     })
-    .catch((error) => {
-    assert.isNotOk(error,'Promise error');
-    done();
-  });
+    .catch(err => {
+      console.log(err);
+    })
   })
 
 })

@@ -52,4 +52,24 @@ describe('<Home />', () => {
     // console.log(filteredData);
     expect(filteredData).to.eql(data)
   })
+
+  it('check Fetch news', (done) => {
+    fetch('http://hn.algolia.com/api/v1/search?query=react')
+    .then(function(res) {
+      return res.json();
+    })
+    .then(function(data) {
+      wrapper.setState({
+      datas: data.hits
+      })
+      // console.log(wrapper.state('datas'));
+      expect(wrapper.state('datas')).to.have.lengthOf(20)
+      done()
+    })
+    .catch((error) => {
+    assert.isNotOk(error,'Promise error');
+    done();
+  });
+  })
+
 })

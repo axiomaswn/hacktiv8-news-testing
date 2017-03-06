@@ -11,7 +11,7 @@ export class People extends Component {
     }
   }
   componentDidMount() {
-    console.log('will');
+    // console.log('will');
     const appThis = this
     fetch('http://swapi.co/api/people/?page=1')
     .then(function(res) {
@@ -25,7 +25,7 @@ export class People extends Component {
   }
 
   render() {
-    console.log('render people');
+    // console.log('render people');
     return (
       <div className="App">
         <div className="App-header">

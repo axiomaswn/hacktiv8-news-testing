@@ -26,13 +26,14 @@ describe('<People />', () => {
       wrapper.setState({
       datas: data.results
       })
-      console.log(wrapper.state('datas'));
+      // console.log(wrapper.state('datas'));
       expect(wrapper.state('datas')).to.have.lengthOf(10)
       done()
     })
-    .catch(err => {
-      console.log(err);
-    })
+    .catch((error) => {
+      assert.isNotOk(error,'Promise error');
+      done();
+    });
   })
 
 })

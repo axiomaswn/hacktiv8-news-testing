@@ -4,7 +4,7 @@ import { shallow, mount } from 'enzyme'
 import {Home} from './Home.js'
 
 describe('<Home />', () => {
-  const wrapper = shallow(<Home />)
+  const wrapper = mount(<Home />)
 
   it('should start with empty datas', () => {
     expect(wrapper.state('datas')).to.have.lengthOf(0)
@@ -19,6 +19,7 @@ describe('<Home />', () => {
     wrapper.instance().handleChange(event)
     expect(wrapper.state('searchKeyword')).to.eql('React')
   })
+
   it('add data into state', () => {
     const data = [
       {id: 1, title: 'React'}
@@ -40,6 +41,15 @@ describe('<Home />', () => {
     wrapper.setState({
       searchKeyword: 'ct'
     })
-    expect(wrapper.instance().filterData(data)).to.eql(data)
+    wrapper.setState({
+      datas: data
+    })
+
+
+    const that = wrapper.instance()
+
+    const filteredData = wrapper.state('datas').filter(that.filterData.bind(that))
+    // console.log(filteredData);
+    expect(filteredData).to.eql(data)
   })
 })

@@ -10,7 +10,7 @@ export class People extends Component {
       datas: ''
     }
   }
-  componentWillMount() {
+  componentDidMount() {
     console.log('will');
     const appThis = this
     fetch('http://swapi.co/api/people/?page=1')
@@ -18,7 +18,6 @@ export class People extends Component {
       return res.json();
     })
     .then(function(data) {
-      console.log(data);
       appThis.setState({
       datas: data.results
       })

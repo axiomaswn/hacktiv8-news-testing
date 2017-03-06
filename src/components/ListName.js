@@ -1,9 +1,9 @@
 import React from 'react'
 
-const showList = (news) => {
+const showList = (props) => {
   return (<span>
     {
-      news.datas.map((data, index) => {
+      props.datas.map((data, index) => {
         return(
           <h3 key={index}>
               {data.name}

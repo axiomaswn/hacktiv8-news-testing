@@ -33,12 +33,9 @@ export class Home extends Component {
 
   filterData (data) {
 
-    if (data.title && this.state.searchKeyword){
-      return data.title.toLowerCase().indexOf(this.state.searchKeyword.toLowerCase()) !== -1
-    }
-    else {
-      return data
-    }
+    const title = data.title || ''
+    return title.toLowerCase().indexOf(this.state.searchKeyword.toLowerCase()) !== -1
+
   }
 
   render() {
@@ -50,8 +47,11 @@ export class Home extends Component {
         </div>
         <h3>Search</h3>
         <Search handles={this.handleChange} />
-        <List datas={this.state.datas.filter(this.filterData.bind(this))
-        } />
+        {
+          this.state.datas ? <List datas={this.state.datas.filter(this.filterData.bind(this))} /> : <div>No data...</div>
+        }
+
+
       </div>
     )
   }

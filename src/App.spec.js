@@ -12,7 +12,7 @@ import { Home } from './components/Home.js'
 import { People } from './components/People.js'
 
 describe('<App />', () => {
-  const wrapper = shallow(<App />)
+  const wrapper = mount(<App />)
   it('should render Home and People', () => {
     expect(wrapper.containsAllMatchingElements([
       <Route component={Home} />,
